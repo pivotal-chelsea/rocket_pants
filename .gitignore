@@ -3,3 +3,4 @@ doc/
 coverage/
 pkg/
 Gemfile.lock
+.idea/*

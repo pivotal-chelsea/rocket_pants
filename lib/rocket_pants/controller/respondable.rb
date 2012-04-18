@@ -122,6 +122,8 @@ module RocketPants
         paginated object, options
       elsif object.is_a?(Array)
         collection object, options
+      elsif object.is_a?(ActiveRecord::Relation)
+        paginated object, options
       else
         resource object, options
       end
