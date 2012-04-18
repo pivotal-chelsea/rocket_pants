@@ -3,10 +3,10 @@ module RocketPants
     extend ActiveSupport::Concern
 
     def self.pagination_type(object)
-      if defined?(WillPaginate::Collection) && object.is_a?(WillPaginate::Collection)
-        :will_paginate
-      elsif object.respond_to?(:num_pages) && object.respond_to?(:current_page)
+      if object.respond_to?(:num_pages) && object.respond_to?(:current_page)
         :kaminari
+      elsif defined?(WillPaginate::Collection) && (object.is_a?(WillPaginate::Collection) || object.is_a?(ActiveRecord::Relation))
+        :will_paginate
       else
         nil
       end
